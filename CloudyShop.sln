@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudyShop", "CloudyShop.csproj", "{AFF23912-E966-4560-B4EF-AC1758179DD2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFF23912-E966-4560-B4EF-AC1758179DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFF23912-E966-4560-B4EF-AC1758179DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFF23912-E966-4560-B4EF-AC1758179DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFF23912-E966-4560-B4EF-AC1758179DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B59AABA-4AB7-48A9-ACF7-F02128477089}
+	EndGlobalSection
+EndGlobal
