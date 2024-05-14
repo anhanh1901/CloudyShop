@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CloudyShop.Models.ShoppingCartItem>
+@using CloudyShop.Common
+<table class="table">
+    <tr>
+        <th class="text-center">STT</th>
+        <th class="text-center">Ảnh sản phẩm</th>
+        <th width="270">Tên sản phẩm</th>
+        <th class="text-center">Giá</th>
+        <th class="text-center" style="width:100px">Số lượng</th>
+        <th class="text-center">Thành tiền</th>
+        <th></th>
+    </tr>
+    @if (Model != null && Model.Any())
+    {
+        var i = 0;
+        var tongtien = decimal.Zero;
+        foreach (var item in Model)
+        {
+            tongtien += @item.TotalPrice;
+            <tr id="trow_@item.ProductId">
+                <td class="text-center">@(i+1)</td>
+                <td class="text-center"><img src="@item.ProductImg" width="60" /></td>
+                <td><a style="color:black" href="/chi-tiet/@item.Alias-p@(item.ProductId)">@item.ProductName</a></td>
+                <td class="text-center">@Common.FormatNumber(item.Price)</td>
+                <td class="text-center"><input type="number" class="form-control" id="Quantity_@item.ProductId" value="@item.Quantity" /></td>
+                <td class="text-center">@Common.FormatNumber(item.TotalPrice)</td>
+                <td><a href="#" class="btn btn-sm btn-danger btnDelete" data-id="@item.ProductId">Xoá</a>
+                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-success btnUpdate">Cập nhật</a>
+                </td>
+            </tr>
+            i++;
+        }
+        <tr>
+            <td colspan="5" class="text-right" style="font-weight:bold">Tổng:</td>
+            <td style="font-weight:bold">@Common.FormatNumber(tongtien, 0)</td>
+            <td></td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <th colspan="7">Chưa có sản phẩm nào trong giỏ hàng!</th>
+        </tr>
+    }
+</table>

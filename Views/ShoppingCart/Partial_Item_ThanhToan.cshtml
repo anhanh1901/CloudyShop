@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CloudyShop.Models.ShoppingCartItem>
+@using CloudyShop.Common
+@if (Model != null && Model.Any())
+{
+    <h3>Giỏ hàng</h3>
+    var i = 0;
+    var tongtien = decimal.Zero;
+    <div style="border:1px solid #808080">
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                tongtien += @item.TotalPrice;
+                <tr>
+                    <td>@(i+1)</td>
+                    <td width="400">@item.ProductName</td>
+                    <td>@Common.FormatNumber(item.Price, 0)x @item.Quantity</td>
+                </tr>
+                <tr></tr>
+                i++;
+            }
+            <tr>
+                <td colspan="2" style="font-weight:bold; text-align:right">Tổng tiền:</td>
+                <td style="font-weight:bold">@Common.FormatNumber(tongtien, 0)</td>
+            </tr>
+        </table>
+    </div>
+ }
