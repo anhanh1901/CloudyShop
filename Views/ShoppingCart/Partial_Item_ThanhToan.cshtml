@@ -2,6 +2,7 @@
 @using CloudyShop.Common
 @if (Model != null && Model.Any())
 {
+    decimal phivc = 30000;
     <h3>Giỏ hàng</h3>
     var i = 0;
     var tongtien = decimal.Zero;
@@ -18,9 +19,21 @@
                 <tr></tr>
                 i++;
             }
+
+            @if(tongtien>300000){
+                phivc = 0;
+            }
+            else
+            {
+                tongtien = tongtien + phivc;
+            }
+          <tr>
+                <td colspan="2" style="font-weight:bold; text-align:right">Phí vận chuyển:</td>
+                <td style="font-weight:bold; width:150px;">@Common.FormatNumber(phivc, 0) VND</td>
+            </tr>
             <tr>
                 <td colspan="2" style="font-weight:bold; text-align:right">Tổng tiền:</td>
-                <td style="font-weight:bold">@Common.FormatNumber(tongtien, 0)</td>
+                <td style="font-weight:bold">@Common.FormatNumber(tongtien, 0) VND</td>
             </tr>
         </table>
     </div>

@@ -4,6 +4,15 @@
     ViewBag.Title = "Chi tiết đơn hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    Dictionary<int, string> statusMappings = new Dictionary<int, string>()
+{
+        {1, "Đang chuẩn bị"},
+        {2, "Đang giao hàng"},
+        {3, "Hoàn thành"},
+        {4, "Huỷ"}
+    };
+}
 <link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_styles.css">
 <link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_responsive.css">
 <div class="container product_section_container">
@@ -68,7 +77,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Trạng thái</label>
-                            <p class="form-control">@(Model.TypePayment == 1 ? "Chưa thanh toán" : "Đã thanh toán")</p>
+                            <p class="form-control">@statusMappings[Model.Status]</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Phương thức TT</label>
+                            <p class="form-control">@(Model.TypePayment == 1 ? "COD" : "Chuyển khoản")</p>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -93,9 +108,9 @@
             </div>
         </div>
 
-            <!-- Main Content -->
+        <!-- Main Content -->
 
 
-        </div>
+    </div>
 </div>
 

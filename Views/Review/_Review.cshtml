@@ -6,7 +6,7 @@
     {
         HttpMethod = "POST",
         UpdateTargetId = "load_review",
-        OnSuccess = "OnSuccessRE",
+        OnSuccess = "OnSuccessRE(data)",
         OnFailure = "OnFailureRE",
         OnBegin = "OnBeginRE"
 
@@ -17,18 +17,18 @@
                 $('#review_submit').attr("disabled", "disabled");
                 $('#load_send').html('<h2>Đang gửi....</h2>');
             }
-            function OnSuccessRE(res) {
-                debugger;
-                if (res.Success) {
+            function OnSuccessRE(data) {
+                if (data.Success) {
                     $("#review_form")[0].reset();
+                    location.reload();
                 }
             }
         </script>
         @Html.AntiForgeryToken()@*<form id="review_form" action="post">*@
         <div>
             <h1>Thêm nhận xét</h1>
-            @Html.TextBoxFor(x => x.FullName, new { @class = "form_input input_name", @placeholder = "Name*", @id = "review_name" })
-            @Html.TextBoxFor(x => x.Email, new { @class = "form_input input_email", @placeholder = "Email*", @id = "review_email" })
+            @Html.TextBoxFor(x => x.FullName, new { @class = "form_input input_name", @placeholder = "Name*", @id = "review_name", required = "" })
+            @Html.TextBoxFor(x => x.Email, new { @class = "form_input input_email", @placeholder = "Email*", @id = "review_email", required = "" })
             @Html.HiddenFor(x => x.UserName)
             @Html.HiddenFor(x => x.ProductId, new { @Value = ViewBag.ProductId })
             <input type="text" id="txtRate" name="Rate" value="4" style="visibility:hidden;" />

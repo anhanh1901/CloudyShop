@@ -292,6 +292,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BestSellingProduct.cs" />
     <Compile Include="Models\Common\Filter.cs" />
     <Compile Include="Models\Common\ThongKeTruyCap.cs" />
     <Compile Include="Models\CustomerViewModel.cs" />
@@ -3502,6 +3503,8 @@
     <Content Include="Content\assets\plugins\moment\moment-with-locales.min.js.map" />
     <Content Include="Content\assets\plugins\moment\moment.min.js.map" />
     <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Refresh.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\BestSellingProduct.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3523,6 +3526,7 @@
     <Content Include="Uploads\images\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png" />
     <Content Include="Uploads\images\login.jpg" />
     <Content Include="Uploads\images\register.jpg" />
+    <Content Include="Uploads\images\user.png" />
     <Content Include="Uploads\_thumbs\Files\2022-10-14 %281%29.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -3594,7 +3598,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\ckfinder\userfiles\" />
-    <Folder Include="Views\Article\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

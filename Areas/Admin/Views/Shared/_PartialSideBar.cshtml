@@ -3,87 +3,46 @@
     <!-- Sidebar user (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="~/Content/Clients/dist/img/avatar.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="~/Uploads/images/user.png" style="background-color:white" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
             <a href="#" class="d-block">Admin</a>
         </div>
     </div>
-
-    <!-- SidebarSearch Form -->
-    @*<div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                    <i class="fas fa-search fa-fw"></i>
-                </button>
-            </div>
-        </div>
-    </div>*@
-
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library -->
             <li class="nav-item">
+                <a href="/Admin/Home/Index" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <p>
+                        Trang chủ
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="/admin/Category" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="fas fa-list"></i>
                     <p>
                         Danh mục
                         @*<i class="right fas fa-angle-left"></i>*@
                     </p>
                 </a>
-                @*<ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="~/content/clients/index.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>dashboard v1</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="~/content/clients/index2.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>dashboard v2</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="~/content/clients/index3.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>dashboard v3</p>
-                    </a>
-                </li>
-            </ul>*@
             </li>
             <li class="nav-item">
                 <a href="/Admin/news" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="far fa-list-alt"></i>
                     <p>
                         Tin tức
                         @*<span class="right badge badge-danger">New</span>*@
                     </p>
                 </a>
             </li>
-            @*<li class="nav-item">
-                <a href="/Admin/posts" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Bài viết
-                    </p>
-                </a>
-            </li>*@
-            <li class="nav-item">
-                <a href="/Admin/Statistical" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Thống kê
-                    </p>
-                </a>
-            </li>
             <li class="nav-item">
                 <a href="/Admin/order" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="fas fa-clipboard-check"></i>
                     <p>
                         Quản lý đơn hàng
                     </p>
@@ -91,7 +50,7 @@
             </li>
             <li class="nav-item">
                 <a href="/Admin/role" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="fas fa-users"></i>
                     <p>
                         Phân quyền
                     </p>
@@ -99,7 +58,7 @@
             </li>
             <li class="nav-item">
                 <a href="/Admin/account" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="fas fa-user"></i>
                     <p>
                         Quản lý tài khoản
                     </p>
@@ -107,7 +66,7 @@
             </li>
             <li class="nav-item">
                 <a href="/Admin/Category" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="fas fa-pump-soap"></i>
                     <p>
                         Quản lý sản phẩm
                         <i class="right fas fa-angle-left"></i>
@@ -129,17 +88,17 @@
                 </ul>
             </li>
             <!--<li class="nav-item">
-                <a href="/admin/settingsystem" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Cấu hình hệ thống-->
-                        @*<span class="right badge badge-danger">New</span>*@
-                    <!--</p>
-                </a>
-            </li>-->
+        <a href="/admin/settingsystem" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+                Cấu hình hệ thống-->
+            @*<span class="right badge badge-danger">New</span>*@
+            <!--</p>
+        </a>
+    </li>-->
             <li class="nav-item">
                 <a href="javascript:document.getElementById('logOffForm').submit()" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="fas fa-sign-out-alt"></i>
                     <p>
                         Đăng xuất
                     </p>

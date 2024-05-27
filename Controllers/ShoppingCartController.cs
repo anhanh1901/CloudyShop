@@ -71,7 +71,6 @@ namespace CloudyShop.Controllers
                 ViewBag.CheckCart = cart;
             }
             return View();
-
         }
         public ActionResult CheckOutSuccess()
         {
@@ -134,7 +133,13 @@ namespace CloudyShop.Controllers
                         strSanPham += "</tr>";
                         thanhtien += sp.Price * sp.Quantity;
                     }
-                    TongTien = thanhtien;
+                    decimal phivc = 30000;
+                    if (thanhtien > 300000)
+                    {
+                        TongTien = thanhtien;
+                        phivc = 0;
+                    }
+                    TongTien = thanhtien + phivc;
                     string contentCustomer = System.IO.File.ReadAllText(Server.MapPath("~/Content/templates/send2.html"));
                     contentCustomer = contentCustomer.Replace("{{MaDon}}", order.Code);
                     contentCustomer = contentCustomer.Replace("{{SanPham}}", strSanPham);
@@ -144,6 +149,7 @@ namespace CloudyShop.Controllers
                     contentCustomer = contentCustomer.Replace("{{Email}}", req.Email);
                     contentCustomer = contentCustomer.Replace("{{DiaChiNhanHang}}", order.Address);
                     contentCustomer = contentCustomer.Replace("{{ThanhTien}}", CloudyShop.Common.Common.FormatNumber(thanhtien, 0));
+                    contentCustomer = contentCustomer.Replace("{{PhiVanChuyen}}", CloudyShop.Common.Common.FormatNumber(phivc, 0));
                     contentCustomer = contentCustomer.Replace("{{TongTien}}", CloudyShop.Common.Common.FormatNumber(TongTien, 0));
                     CloudyShop.Common.Common.SendMail("ShopOnline", "Đơn hàng #" + order.Code, contentCustomer.ToString(), req.Email);
 
@@ -156,6 +162,7 @@ namespace CloudyShop.Controllers
                     contentAdmin = contentAdmin.Replace("{{Email}}", req.Email);
                     contentAdmin = contentAdmin.Replace("{{DiaChiNhanHang}}", order.Address);
                     contentAdmin = contentAdmin.Replace("{{ThanhTien}}", CloudyShop.Common.Common.FormatNumber(thanhtien, 0));
+                    contentCustomer = contentAdmin.Replace("{{PhiVanChuyen}}", CloudyShop.Common.Common.FormatNumber(phivc, 0));
                     contentAdmin = contentAdmin.Replace("{{TongTien}}", CloudyShop.Common.Common.FormatNumber(TongTien, 0));
                     CloudyShop.Common.Common.SendMail("Cloudy Shop", "Đơn hàng mới #" + order.Code, contentAdmin.ToString(), ConfigurationManager.AppSettings["EmailAdmin"]);
                     cart.ClearCart();
@@ -219,7 +226,7 @@ namespace CloudyShop.Controllers
             {
                 if (checkProduct?.Quantity < quantity)
                 {
-                    code = new { Success = false, msg = "Số lượng mua lớn hơn số lượng có. Vui lòng thử lại!", code = -1, Count = 0 };
+                    code = new { Success = false, msg = "Sản phẩm hiện đang hết hàng. Vui lòng thử lại sau!", code = -1, Count = 0 };
                     return Json(code);
                 }
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
@@ -277,7 +284,7 @@ namespace CloudyShop.Controllers
             if (cart != null)
             {
                 var productBuy = db.Products.FirstOrDefault(x => x.Id == id);
-                if (productBuy != null && productBuy.Quantity > quantity)
+                if (productBuy != null && quantity>=1 && productBuy.Quantity > quantity)
                 {
                     cart.UpdateQuantity(id, quantity);
                     return Json(new { Success = true });

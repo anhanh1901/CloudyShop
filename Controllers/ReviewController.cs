@@ -47,7 +47,6 @@ namespace CloudyShop.Controllers
                 var items = _db.Orders.Where(x => x.CustomerId == user.Id).ToList();
                 return PartialView(items);
             }
-
             return PartialView();
         }
 
@@ -58,11 +57,13 @@ namespace CloudyShop.Controllers
             ViewBag.Count = item.Count;
             return PartialView(item);
         }
-
-        [AllowAnonymous]
         [HttpPost]
         public ActionResult PostReview(ReviewProduct req)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                RedirectToAction("Login", "Account");
+            }
             if (ModelState.IsValid)
             {
                 req.CreatedDate = DateTime.Now;
@@ -70,7 +71,7 @@ namespace CloudyShop.Controllers
                 _db.SaveChanges();
                 return Json(new { Success = true });
             }
-            return Json(new { Success = false });
+            return Json(new { Success = true });
         }
 
         protected override void Dispose(bool disposing)
@@ -87,5 +88,6 @@ namespace CloudyShop.Controllers
             var items = _db.OrderDetails.Where(x => x.OrderId == id).ToList();
             return PartialView(items);
         }
+      
     }
 }

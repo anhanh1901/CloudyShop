@@ -17,6 +17,8 @@
                 if (rs.Success) {
                     $('#checkout_items').html(rs.Count);
                     alert(rs.msg);
+                } else {
+                    alert(rs.msg);
                 }
             }
         });
@@ -77,7 +79,12 @@ function DeleteAll() {
         }
     });
 }
-function Update(id,quantity) {
+function Update(id, quantity) {
+    if (!Number.isInteger(quantity) || quantity < 1) {
+        alert('Số lượng không hợp lệ.');
+        LoadCart();
+        return;
+    }
     $.ajax({
         url: '/shoppingcart/Update',
         type: 'POST',
@@ -88,7 +95,7 @@ function Update(id,quantity) {
             }
         else {
             LoadCart();
-                alert('Số lượng mua lớn hơn số lượng có. Vui lòng thử lại.')
+                alert('Số lượng mua lớn hơn số lượng có. Vui lòng thử lại!')
         }
     }
     });

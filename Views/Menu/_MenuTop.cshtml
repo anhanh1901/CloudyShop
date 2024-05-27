@@ -1,4 +1,10 @@
-﻿@model IEnumerable<CloudyShop.Models.EF.Category>
+﻿<style>
+    .navbar_menu li a {
+        font-family: Rubik,Helvetica,PingFang HK,Microsoft JhengHei,\5fae\8edf\6b63\9ed1\9ad4,STHeiti,Noto Sans TC,Arial,sans-serif;
+        font-weight:bolder;
+    }
+</style>
+@model IEnumerable<CloudyShop.Models.EF.Category>
 @if (Model != null && Model.Any())
 {
     <ul class="navbar_menu">
